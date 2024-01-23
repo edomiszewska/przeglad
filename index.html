@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+
+    <title>zadanie sklepik</title>
+    <style>
+        body{
+            background-color: beige;
+            color: rgb(121, 101, 36);
+            font-size: xx-large;
+        }
+        label{
+            display:block;
+            
+        }
+        form{
+        display: flex;
+        flex-direction: column;
+         align-items: center;}
+
+         .zamow{
+            background-color: rgba(124, 124, 110, 0.26);
+            color: rgb(121, 101, 36);
+             font-size:x-large
+        
+         }
+    </style>
+</head>
+
+<body>
+    <form action="#">
+<label for="imie">imię:<input type="text" id="imie"></label>
+<label for="klasa">która klasa:
+<select name="klasa" id="klasa">
+    <option value="jeden">1</option>
+    <option value="dwa">2</option>
+    <option value="trzy">3</option>
+    <option value="czter">4</option>
+    <option value="piec">5</option>
+</select></label>
+<label for="zgoda">wyrażam zgodę na przetwarzanie danych osobowych<input type="checkbox" id="zgoda"></label>
+
+<label for="srednia">srednia wynosi:<input type="text" value=" 4,75" name="srednia" id="srednia"></label>
+<label for="kanapka">kanapka 1,8zł<input type="checkbox" value="1.8" id="kanapka" name="zamowienie"></label>
+<label for="batonik">batonik 1,7zł<input type="checkbox" value="1.7" id="batonik" name="zamowienie"></label>
+<label for="napoj">napoj 1,4zł<input type="checkbox" value="4.0" id="napoj" name="zamowienie"></label>
+<p id="display" class="display"></p>
+<button class="zamow" id="zamow">zamow</button>
+
+
+
+<script>
+
+const zamow=document.querySelector('#zamow')
+zamow.addEventListener('click', function(evt){
+evt.preventDefault()
+const zgoda=document.querySelector('#zgoda')
+const wyswietl=document.querySelector('#display')
+if(zgoda.checked){
+    display.innerText=``
+    const imie=document.querySelector('#imie').value
+    const klasa=parseInt(document.querySelector('#klasa').value)
+    const srednia=parseFloat(document.querySelector('#srednia').value).toFixed(2)
+    const zamow=document.querySelectorAll('input[name="zamowienie"]:checked')
+    let znizka=0
+    if(srednia>=5){
+        if(srednia<=6){
+        znizka=0.15}
+    }else if(srednia<5){
+        if(srednia>=4){
+        znizka=0.5
+    }
+    }else if(srednia<4){
+        if(srednia>=1){
+        znizka=0
+    }
+    }else{
+        display.innerText=`podaj srednia z przedzialu 1 do 6: `
+    }
+}
+else{
+display.innerText=`potrzebna zgoda na przetwarzanie danych! zaznacz przycisk.`
+}
+
+
+}
+)
+
+
+
+
+
+</script>
+
+</form>
+</body>
+</html>
